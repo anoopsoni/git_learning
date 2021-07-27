@@ -1,0 +1,109 @@
+#Git Configuration files
+
+1. system level
+   path: /etc/gitconfig
+   git config --system
+
+2. Global level
+   path: ~/.gitconfig
+   git config --global
+
+3. Repository Level
+   path: .git/config
+   git config
+
+# Update global configuration
+    git config --global user.name "anoop soni"
+    git config --global user.email "anoop.soni@yahoo.com"
+    git config --global help.autocorrect 1
+    git config --global core.editor vi
+    git config --global http.proxy http://1.1.1.1
+    git config --global http.sslCAInfo $HOME/ssl/voda.cert
+
+# Basic commands
+
+1. git init #It will create .git dir which contains data and meta data
+2. git add < file name > #( -A for all files , -u for updated files )
+3. git commit -m < commit message >
+4. git commit --amend -m < commit message >   # git allow only amending the most recent commit
+5. git status
+6. git log or git log -- < file name>
+7. git log --online
+8. git log --oneline --decorate --graph --all
+9. git log -3   # first 3 commits
+10.git log --author="anoop soni"
+11.git log --grep="bug"
+12.git log --since=2021-07-02
+13.git log --until="3 days ago"
+14.git log --after="2.weeks" ( --before )
+15.git log SHA-1
+16.git log SHA-1..SHA-1
+17.git log -stat # provide statics about changes
+18.git diff              # display diff between working dir and staging
+19.git diff --staged     # display diff between staging and repository
+20.git diff HEAD~1..HEAD
+
+
+21. git checkout                    # to undo the changes
+22. git checkout -- <file name>     # discard the changes in working dir
+23. git revert HEAD <file name>     # discard the changes in staging area
+24. git checkout <SHA-1> -- <filename> #retrive the old version
+25. git revert <SHA-1>              # revert a commit
+26. git reset --soft/--hard/--mixed
+            --soft: working and staging area will be untouched, HEAD will be moved to previous commit
+            --hard: working and staging area will be reset, HEAD will be moved to previous commit
+            --mixed: working dir will be untouched, staging will be reset and HEAD will be moved to previous commit
+27. git ls-tree HEAD
+
+
+## Branch
+
+28. git branch < branch name >                      # Create a new branch
+29. git checkout branch_name                        # Switch in new branch
+30. git checkout -b branch_name                     # create and switch new branch
+31. git diff <branch_name>..<branch_name>
+32. git branch -m <old name > < new name >          # Rename branch
+33. git branch -d branch_name                       # Delete branch but all changes should be merged and we must be switch to this branch
+34. git branch -D branch_name                       # Force delete
+35. git branch                                      # Display local branch
+36. git branch -r                                   # Display remote branch
+37. git branch -a                                   # Display remote and local branches
+38. git branch --no-merged                          # check the branch which are not merged with current branch
+39. git branch --merged                             # check the branch which are merged with current branch
+40. git branch -r --merged                          # for remote branch
+41. git merge < branch name >
+
+42. git remote                                      # Display the remote name
+43. git remote -v                                   # Display the remote URL
+44. git remote add origin                           # Add remote repo
+45. git push origin feedback_branch                 # Push feedback branch
+46. git push -u origin master
+47. git push origin :remote_branch_name             # Remove the branch
+48. git push --delete origin < remote branch name > # Another option to delete branch
+49. git remote prune origin                         # TO remove STALE branch
+      # STALE Branch: A remote tracking branch that no longer track anything because actual branch in remote
+                      repository has been deleted.
+50. git cherry-pick < SHA-Number >                  # To add the changes of a single commit
+60. git cherry-pick <SHA-1>..<SHA-1>                # Commit range provided
+
+61. git stash                                       # Save the working dir change for later use
+62. git stash list
+63. git stash apply
+64. git stash pop
+65. git stash drop
+66. git stash clear
+67. git stash branch < branch name >
+
+68. git tag < tag name > < commit number >
+69. git tag -a v1.1 -m "Version1.1" <Commit number> # Annotated tag where we can provide message
+70. git tag --list
+71. git tag -l "v*"                                 # List of tags staring with v"
+72. git show v1.1
+73. git diff v1.1..v1.0
+74. git tag --delete < tag name >
+75. git push origin v1.1
+76. git push origin --tags                          # Push all tags to remote
+77. git push origin :v1.1                           # Delete the tags from remote
+78. git push --delete origin v1.1 or git push -d origin v1.1
+
+
